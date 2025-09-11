@@ -1,0 +1,41 @@
+identity:
+  name: msgraph_send_mail
+  author: cn00
+  label:
+    en_US: Send email via Microsoft Graph
+    zh_Hans: 通过Microsoft Graph发送邮件
+description:
+  human:
+    en_US: Send email via Microsoft Graph
+    zh_Hans: 通过Microsoft Graph发送邮件
+  llm: Send email via Microsoft Graph
+parameters:
+  - name: subject
+    type: string
+    required: true
+    label:
+      en_US: Email Subject
+      zh_Hans: 邮件主题
+    human_description:
+      en_US: Subject of the email
+      zh_Hans: 邮件的主题
+  - name: content
+    type: string
+    required: true
+    label:
+      en_US: Email Content
+      zh_Hans: 邮件内容
+    human_description:
+      en_US: Content of the email
+      zh_Hans: 邮件的内容
+    llm_description: Content of the email
+    form: llm
+  - name: recipients
+    type: array
+    required: true
+    label:
+      en_US: Email Recipients
+      zh_Hans: 邮件收件人
+    human_description:
+      en_US: List of email recipients
+      zh_Hans: 邮件收件人列表
