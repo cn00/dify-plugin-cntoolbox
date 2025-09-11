@@ -3,6 +3,25 @@ name: Plugin Publish Workflow
 on:
   release:
     types: [published]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to deploy'
+        required: true
+        default: 'staging'
+        type: choice
+        options:
+        - staging
+        - production
+      log_level:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+        type: string
+      tags:
+        description: 'Test scenario tags'
+        required: false
+        type: string
 
 jobs:
   publish:
