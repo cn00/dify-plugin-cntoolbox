@@ -106,10 +106,9 @@ credentials_for_provider:
       zh_Hans: 您的 S3 存储空间名称
     url: https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html
 tools:
-  - tools/s3_upload_file.yaml
-  - tools/s3_upload_base64.yaml
+  - tools/sendMail.yaml
 extra:
   python:
-    source: provider/botos3.py
+    source: provider/msgraph.py
 tags:
     - utilities
