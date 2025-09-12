@@ -1,7 +1,7 @@
-version: 0.0.1
+version: 1.0.0
 type: plugin
 author: cn00
-name: cn00.msgraph
+name: msgraph
 label:
   en_US: msgraph
   zh_Hans: msgraph

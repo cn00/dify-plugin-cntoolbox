@@ -1,114 +1,100 @@
 identity:
-  author: datoujiejie
-  name: botos3
+  author: cn00
+  name: msgraph
   label:
-    en_US: botos3
-    zh_Hans: botos3
+    en_US: msgraph
+    zh_Hans: msgraph
   description:
-    en_US: upload file by boto s3
-    zh_Hans: 通过boto库操作s3协议
+    en_US: msgraph utils
+    zh_Hans: msgraph工具
   icon: icon.svg
-credentials_for_provider:
-  DIFY_ENDPOINT:
+
+credentials_schema: &x-credentials_schema
+  MICROSOFT_GRAPH_USERNAME:
     type: text-input
     required: true
     label:
-      en_US: DIFY Endpoint
-      zh_Hans: dify 服务地址
+      en_US: msgraph username
+      zh_Hans: msgraph 用户名
     placeholder:
-      en_US: Please input your dify endpoint
-      zh_Hans: 请输入你的 dify 服务地址
+      en_US: Please input your msgraph username
+      zh_Hans: 请输入你的msgraph用户名
     help:
-      en_US: The endpoint for your dify service
-      zh_Hans: dify 服务的访问地址
-    url: https://docs.dify.ai/
-  AWS_REGION:
+      en_US: The endpoint for your msgraph service
+      zh_Hans: msgraph服务的用户名
+    url: https://developer.microsoft.com/en-us/graph/quick-start
+  MICROSOFT_GRAPH_CLIENTID:
     type: text-input
     required: true
-    default: cn-northwest-1
     label:
-      en_US: AWS Region
-      zh_Hans: AWS 区域
+      en_US: msgraph Client ID
+      zh_Hans: msgraph Client ID
     placeholder:
-      en_US: Please input your AWS region
-      zh_Hans: 请输入你的 AWS 区域
+      en_US: Please input your msgraph Client ID
+      zh_Hans: 请输入你的msgraph Client ID
     help:
-      en_US: The AWS region for your S3 service
-      zh_Hans: S3 服务的 AWS 区域
-    url: https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html
-  S3_ENDPOINT:
+      en_US: The Client ID for your msgraph service
+      zh_Hans: msgraph服务的Client ID
+    url: https://developer.microsoft.com/en-us/graph/quick-start
+  MICROSOFT_GRAPH_TENANTID:
+    type: text-input
+    required: true
+    label:
+      en_US: msgraph Tenant ID
+      zh_Hans: msgraph Tenant ID
+    placeholder:
+      en_US: Please input your msgraph Tenant ID
+      zh_Hans: 请输入你的msgraph Tenant ID
+    help:
+      en_US: The Tenant ID for your msgraph service
+      zh_Hans: msgraph服务的Tenant ID
+    url: https://developer.microsoft.com/en-us/graph/quick-start
+  MICROSOFT_GRAPH_CLIENTSECRET:
+    type: text-input
+    required: true
+    label:
+      en_US: msgraph Client Secret
+      zh_Hans: msgraph Client Secret
+    placeholder:
+      en_US: Please input your msgraph Client Secret
+      zh_Hans: 请输入你的msgraph Client Secret
+    help:
+      en_US: The Client Secret for your msgraph service
+      zh_Hans: msgraph服务的Client Secret
+    url: https://developer.microsoft.com/en-us/graph/quick-start
+  MICROSOFT_GRAPH_TEST_EMAIL:
     type: text-input
     required: false
     label:
-      en_US: S3 Endpoint
-      zh_Hans: S3 服务地址
+      en_US: Test Email
+      zh_Hans: 测试邮箱
     placeholder:
-      en_US: Please input your S3 endpoint
-      zh_Hans: 请输入你的 S3 服务地址
+      en_US: Please input your test email
+      zh_Hans: 请输入你的测试邮箱
     help:
-      en_US: The endpoint for your S3 service
-      zh_Hans: S3 服务的访问地址
-    url: https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html
-
-  S3_ACCESS_KEY:
-    type: secret-input
+      en_US: The email address used for testing email sending functionality
+      zh_Hans: 用于测试发送邮件功能的邮箱地址
+    url: https://developer.microsoft.com/en-us/graph/quick-start
+  MICROSOFT_GRAPH_SCOPE_1:
+    type: text-input
     required: false
     label:
-      en_US: S3 Access Key
-      zh_Hans: S3 访问密钥ID
+      en_US: Scope 1
+      zh_Hans: Scope 1
     placeholder:
-      en_US: Please input your S3 Access Key
-      zh_Hans: 请输入你的 S3 访问密钥ID
+      en_US: Please input your scope 1
+      zh_Hans: 请输入你的scope 1
     help:
-      en_US: Your S3 Access Key ID
-      zh_Hans: 您的 S3 访问密钥ID
-    url: https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html
+      en_US: The scope for your msgraph service, default is https://graph.microsoft.com/.default
+      zh_Hans: msgraph服务的scope，默认是https://graph.microsoft.com/.default
+    url: https://developer.microsoft.com/en-us/graph/quick-start
 
-  S3_SECRET_KEY:
-    type: secret-input
-    required: false
-    label:
-      en_US: S3 Secret Key
-      zh_Hans: S3 访问密钥密码
-    placeholder:
-      en_US: Please input your S3 Secret Key
-      zh_Hans: 请输入你的 S3 访问密钥密码
-    help:
-      en_US: Your S3 Secret Access Key
-      zh_Hans: 您的 S3 访问密钥密码
-    url: https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html
+credentials_for_provider: *x-credentials_schema
 
-  S3_PUBLIC_URL:
-    type: text-input
-    required: true
-    label:
-      en_US: S3 Public URL
-      zh_Hans: S3 公网访问地址
-    placeholder:
-      en_US: Please input your S3 public URL
-      zh_Hans: 请输入你的 S3 公网访问地址
-    help:
-      en_US: The public access URL for your S3 bucket
-      zh_Hans: S3 存储空间的公网访问地址
-    url: https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html
-
-  BUCKET_NAME:
-    type: text-input
-    required: true
-    label:
-      en_US: S3 Bucket Name
-      zh_Hans: S3 存储空间名称
-    placeholder:
-      en_US: Please input your S3 bucket name
-      zh_Hans: 请输入你的 S3 存储空间名称
-    help:
-      en_US: The name of your S3 bucket
-      zh_Hans: 您的 S3 存储空间名称
-    url: https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html
 tools:
   - tools/sendMail.yaml
 extra:
   python:
-    source: provider/msgraph.py
+    source: provider/msgraphProvider.py
 tags:
-    - utilities
+  - utilities

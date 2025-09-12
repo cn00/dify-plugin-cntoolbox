@@ -62,7 +62,7 @@ class GraphApi:
         from azure.identity.aio import (
             ClientSecretCredential
         )
-        from plugin.msgraph.tools.msgraph import GraphServiceClient
+        from msgraph import GraphServiceClient
 
         # https://github.com/Azure-Samples/ms-identity-python-webapp
         # https://learn.microsoft.com/zh-cn/entra/msal/python/
