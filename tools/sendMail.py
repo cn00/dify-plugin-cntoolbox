@@ -11,7 +11,7 @@ class SendMail(Tool):
         subject         = tool_parameters.get("subject", "No Subject")
         content         = tool_parameters.get("content", "No Content")
         recipients      = tool_parameters.get("recipients", "cool-navy@outlook.com")
-        content_type    = tool_parameters.get("content_type", "text")
+        content_type    = tool_parameters.get("content_type", "text").strip().lower() == 'html' and BodyType.Html or BodyType.Text
         try:
             api = GraphApi(
                 username        =self.runtime.credentials["MICROSOFT_GRAPH_USERNAME"],
@@ -20,12 +20,28 @@ class SendMail(Tool):
                 client_secret   =self.runtime.credentials["MICROSOFT_GRAPH_CLIENTSECRET"],
                 scopes          =[self.runtime.credentials["MICROSOFT_GRAPH_SCOPE_1"]],
             )
-            (html, plain_text_content) = convert_markdown_to_html(content)
+            content =  content_type == BodyType.Html and convert_markdown_to_html(content) or content
+
             asyncio.run(api.sendMail(
                 to=[i.strip() for i in recipients.split(",")],
                 subject=subject,
                 content_type=content_type,
-                content=(html if content_type == 'html' else plain_text_content),
+                content=content,
             ))
+            yield self.create_json_message({
+                "status": "success",
+                "to": [i.strip() for i in recipients.split(",")],
+                "subject": subject,
+                "content_type": content_type,
+                # "html": html,
+                # "plain_text": plain_text_content,
+            })
         except Exception as e:
-            yield self.create_text_message(text=f'tool_parameters:{tool_parameters} err:{str(e)}')
+            yield self.create_json_message({
+                "status": "error",
+                "to": [i.strip() for i in recipients.split(",")],
+                "subject": subject,
+                "content_type": content_type,
+                "message": str(e),
+                "tool_parameters": tool_parameters,
+            })

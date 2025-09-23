@@ -9,6 +9,14 @@ identity:
     zh_Hans: msgraph工具
   icon: icon.svg
 
+tools:
+  - tools/sendMail.yaml
+extra:
+  python:
+    source: provider/msgraphProvider.py
+tags:
+  - utilities
+
 credentials_schema: &x-credentials_schema
   MICROSOFT_GRAPH_USERNAME:
     type: text-input
@@ -90,11 +98,3 @@ credentials_schema: &x-credentials_schema
     url: https://developer.microsoft.com/en-us/graph/quick-start
 
 credentials_for_provider: *x-credentials_schema
-
-tools:
-  - tools/sendMail.yaml
-extra:
-  python:
-    source: provider/msgraphProvider.py
-tags:
-  - utilities

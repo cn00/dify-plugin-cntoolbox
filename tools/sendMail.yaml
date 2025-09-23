@@ -2,13 +2,18 @@ identity:
   name: msgraph_send_mail
   author: cn00
   label:
-    en_US: Send email via Microsoft Graph
-    zh_Hans: 通过Microsoft Graph发送邮件
+    en_US:  msgraph send email
+    zh_Hans: msgraph 发送邮件
 description:
   human:
-    en_US: Send email via Microsoft Graph
-    zh_Hans: 通过Microsoft Graph发送邮件
-  llm: Send email via Microsoft Graph
+    en_US: Send email via msgraph-sdk
+    zh_Hans: 通过 msgraph 发送邮件
+  llm: Send email via msgraph-sdk
+
+extra:
+  python:
+    source: tools/sendMail.py
+
 parameters:
   - name: recipients
     type: string
@@ -31,20 +36,23 @@ parameters:
       zh_Hans: 邮件的主题
     form: llm
   - name: content_type
-    type: string
-    # type: choice
-    # options:
-    #   - text
-    #   - html
+    type: select
     required: false
     label:
-      en_US: Content Type
+      en_US: Content Type text/html
       zh_Hans: 邮件内容格式 text/html
     human_description:
-      en_US: Content of the email
+      en_US: Content of the email text/html
       zh_Hans: 邮件的内容格式 text/html
-    llm_description: Content Type of the email
+    llm_description: Content Type of the email text/html
     form: llm
+    options:
+      - label:
+          en_US: Html
+        value: html
+      - label:
+          en_US: Text
+        value: text
 
   - name: content
     type: string
@@ -57,7 +65,3 @@ parameters:
       zh_Hans: 邮件的内容
     llm_description: Content of the email
     form: llm
-
-extra:
-  python:
-    source: tools/sendMail.py

@@ -1,6 +1,6 @@
 import re
 
-def convert_markdown_to_html(markdown_text: str) -> tuple[str, str]:
+def convert_markdown_to_html(markdown_text: str) -> str: #tuple[str, str]:
     """
     Converts markdown text to HTML for email compatibility.
     
@@ -190,7 +190,7 @@ def convert_markdown_to_html(markdown_text: str) -> tuple[str, str]:
 </body>
 </html>'''
 
-    return html, plain_text_content
+    return html #, plain_text_content
 
 def process_inline_formatting(text: str) -> str:
     """
