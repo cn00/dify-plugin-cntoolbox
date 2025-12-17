@@ -2,20 +2,22 @@ identity:
   author: cn00
   name: msgraph
   label:
-    en_US: msgraph
-    zh_Hans: msgraph
+    en_US: toolbox
+    zh_Hans: toolbox
   description:
-    en_US: msgraph utils
-    zh_Hans: msgraph工具
+    en_US: toolbox utils
+    zh_Hans: toolbox 工具集
   icon: icon.svg
 
 tools:
   - tools/sendMail.yaml
+  - tools/s3put.yaml
+  - tools/s3get.yaml
+  - tools/duckdbRun.yaml
 extra:
   python:
-    source: provider/msgraphProvider.py
-tags:
-  - utilities
+    source: provider/ToolboxProvider.py
+tags: [mail,msgraph,office365,outlook,s3,aws,duckdb]
 
 credentials_schema: &x-credentials_schema
   MICROSOFT_GRAPH_USERNAME:

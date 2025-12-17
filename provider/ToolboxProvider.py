@@ -6,7 +6,7 @@ import asyncio
 
 from tools.msgraphApi import GraphApi
 
-class MSGraphProvider(ToolProvider):
+class ToolboxProvider(ToolProvider):
     logger = logging.getLogger()
     def _validate_credentials(self, credentials: dict[str, Any]) -> None:
         def getenv(key: str, default: str | None = None) -> str | None:

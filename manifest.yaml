@@ -1,14 +1,22 @@
-version: 1.0.0
+version: 1.0.1
 type: plugin
 author: cn00
 name: msgraph
 label:
-  en_US: msgraph
-  zh_Hans: msgraph
+  en_US: toolbox
+  zh_Hans: toolbox
 description:
-  en_US: msgraph utils
-  zh_Hans: msgraph工具
+  en_US: toolbox utils
+  zh_Hans: toolbox 工具
 icon: icon.svg
+tag:
+  - mail
+  - msgraph
+  - outlook
+  - aws
+  - s3
+  - duckdb
+
 resource:
   memory: 268435456
   permission:
@@ -21,9 +29,11 @@ resource:
     storage:
       enabled: true
       size: 1048576
+
 plugins:
   tools:
-    - provider/msgraph.yaml
+    - provider/ToolboxProvider.yaml
+
 meta:
   version: 0.0.3
   arch:

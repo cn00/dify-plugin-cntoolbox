@@ -1,5 +1,50 @@
 import re
 
+def dict_array_to_markdown(data:[dict]) -> str:
+    """
+    Converts a list of dictionaries to a Markdown table.
+    
+    Args:
+        data: List of dictionaries with the same keys
+        
+    Returns:
+        A string containing the Markdown table
+    """
+    if not data:
+        return ""
+    
+    # Extract headers from the first dictionary
+    headers = data[0].keys()
+    
+    # Create the header row
+    header_row = "| " + " | ".join(headers) + " |"
+    
+    # Create the separator row
+    separator_row = "| " + " | ".join(['---'] * len(headers)) + " |"
+    
+    # Create the data rows
+    data_rows = []
+    for item in data:
+        row = "| " + " | ".join(str(item.get(header, "")) for header in headers) + " |"
+        data_rows.append(row)
+    
+    # Combine all parts into the final markdown table
+    markdown_table = "\n".join([header_row, separator_row] + data_rows)
+    
+    return markdown_table
+
+def dict_array_to_markdown_test():
+    data = [
+        {"Name": "Alice", "Age": 30, "City": "New York"},
+        {"Name": "Bob", "Age": 25, "City": "Los Angeles"},
+        {"Name": "Charlie", "Age": 35, "City": "Chicago"}
+    ]
+    markdown = dict_array_to_markdown(data)
+    print(markdown)
+    
+# if __name__ == "__main__":
+#     dict_array_to_markdown_test()
+
 def convert_markdown_to_html(markdown_text: str) -> str: #tuple[str, str]:
     """
     Converts markdown text to HTML for email compatibility.

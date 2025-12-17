@@ -1,0 +1,82 @@
+identity:
+  name: duckdbRun
+  author: cn00
+  label:
+    en_US: duckdb query
+    zh_Hans: duckdb 查询
+description:
+  human:
+    en_US: Run a query on a duckdb database
+    zh_Hans: 在 duckdb 上执行查询
+  llm: Run a query on a duckdb database
+
+extra:
+  python:
+    source: tools/duckdbRun.py
+
+parameters:
+  - name: AWS_REGION
+    type: string
+    required: false
+    default: cn-northwest-1
+    label:
+      en_US: AWS Region
+      zh_Hans: AWS 区域
+    human_description:
+      en_US: AWS Region
+      zh_Hans: 要上传对象的区域
+    form: llm
+
+  - name: aws_s3_endpoint
+    type: string
+    required: false
+    default: s3.cn-northwest-1.amazonaws.com.cn
+    label:
+      en_US: aws s3 endpoint
+      zh_Hans: aws s3 endpoint
+    human_description:
+      en_US: Endpoint of the AWS S3 service
+      zh_Hans: AWS S3 服务的端点
+    form: llm
+
+  - name: sql_query
+    type: string
+    required: false
+    default: "select * from duckdb_extensions();"
+    label:
+      en_US: SQL Query
+      zh_Hans: SQL 查询
+    human_description:
+      en_US: Content of the SQL query
+      zh_Hans: SQL 查询的内容
+    llm_description: Content of the SQL query
+    form: llm
+
+  # - name: extra_json_data
+  #   type: string
+  #   required: false
+  #   label:
+  #     en_US: Extra Parameters
+  #     zh_Hans: 额外参数
+  #   human_description:
+  #     en_US: Extra json data for duckdb query
+  #     zh_Hans: Extra json data for duckdb query
+
+  - name: return_type
+    type: select
+    required: false
+    label:
+      en_US: return Type
+      zh_Hans: 返回格式
+    human_description:
+      en_US: return type
+      zh_Hans: return 格式
+    llm_description: return type
+    form: llm
+    options:
+      - label:
+          en_US: Json
+        value: json
+      - label:
+          en_US: Html
+        value: html

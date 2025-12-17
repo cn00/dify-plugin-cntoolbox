@@ -1,0 +1,71 @@
+identity:
+  name: s3get
+  author: cn00
+  label:
+    en_US:  s3 get object
+    zh_Hans: s3 对象读取
+description:
+  human:
+    en_US: Get file from s3 bucket
+    zh_Hans: 从 s3 桶中获取文件
+  llm: Get file from s3 bucket
+
+extra:
+  python:
+    source: tools/s3get.py
+
+parameters:
+  - name: AWS_REGION
+    type: string
+    required: false
+    default: cn-northwest-1
+    label:
+      en_US: AWS Region
+      zh_Hans: AWS 区域
+    human_description:
+      en_US: AWS Region
+      zh_Hans: 要上传对象的区域
+    form: llm
+
+  - name: bucket
+    type: string
+    required: true
+    label:
+      en_US: S3 Bucket Name
+      zh_Hans: S3 桶名称
+    human_description:
+      en_US: Name of the S3 bucket
+      zh_Hans: S3 桶的名称
+    form: llm
+
+  - name: s3key
+    type: string
+    required: true
+    label:
+      en_US: s3 Object Key
+      zh_Hans: s3 对象键
+    human_description:
+      en_US: Key of the object to upload
+      zh_Hans: 要上传对象的键
+    form: llm
+
+  - name: content_type
+    type: select
+    required: false
+    default: text
+    label:
+      en_US: Content Type text/base64
+      zh_Hans: 内容格式 text/base64
+    human_description:
+      en_US: Content type of the Object text/base64
+      zh_Hans: 对象的内容格式 text/base64
+    llm_description: Content Type of the object text/base64
+    form: llm
+    options:
+      - label:
+          en_US: text
+        value: text
+      - label:
+          en_US: base64
+        value: base64
+
